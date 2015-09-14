@@ -2,54 +2,44 @@
 #include <iostream>
 using namespace std;
 
-int main(){
-  int circle[300];
-  int m = -1, n = -1;
-  int winners[100];
-  int index = 0;
-  int amounts[100], token[100], group = 0;
-  bool jump = true;
+int joseph(int n, int m){
+  int flat[300];
+  for(int i = 0; i < n; i++)
+    flat[i] = 1;
 
-  while(0){
-    cout << "something" << endl;
-  }
-
-  do{
-    cin >> n >> m;
-    amounts[group] = n;
-    token[group] = m;
-    group++;
-    cout << m << n << endl;
-    jump = (m != 0 && n != 0);
-    cout << jump << endl;
-  }while(jump);
-  
-    cout << n << m;
-  for(int z = 0; z < group; ++z){
-    m = amounts[z];
-    n = token[z];
-
-    for(int i = 0; i < 300; ++i){
-      circle[i] = i;
-    }
-    int rounds = m % n == 0 ? m/n : m/n + 1;
-    int count = 0;
-      for(int j = 1, k = 1; j <= n; ){
-        if (circle[j] != 0 && k == 0) {
-          circle[j] = 0;
-          k = (++k) % m;
-          count++;
+  for(int i = 0, count = n, mod = m - 1; count != 1; i = ((++i) % n)){
+      if(flat[i] == 1){
+        if(mod == 0){
+          flat[i] = 0;
+          count--;
         }
-        if (count == n -1){
-          winners[index++] = j;
-          break;
-        }
-        j = j % n + 1;
+        mod = (mod - 1) % m;
       }
   }
+  for(int i = 0; i < n; i++){
+    if(flat[i] == 1)
+      return i + 1;
+  }
+}
 
-  for(int i = 0; i < index; ++i)
-    cout << winners[i] << endl;
+int main(){
+  int set_n[100], set_m[100];
+  int count = 0;
+
+  while(true){
+    int n, m;
+    cin >> n >> m;
+    if ((n == 0) && (m == 0)){
+      break;
+    } else {
+      set_n[count] = n;
+      set_m[count] = m;
+      count++;
+    }
+  }
+
+  for(int i = 0; i < count; i++)
+    cout << joseph(set_n[i], set_m[i]) << endl;
 
   return 0;
 }
