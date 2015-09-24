@@ -22,7 +22,7 @@ int d,h,p,t;  //洞庭，洪泽，鄱阳，太湖
       &&((d+h+p+t)==10)
       )
      {
-      cout << t << endl << d << endl << p << endl << h;
+      cout << d << endl << h << endl << p << endl << t << endl;
      }
     }
    }
