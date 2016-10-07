@@ -22,11 +22,10 @@ int main(){
   char queue[101] = {0};
   int n;
 
-
   cin >> queue;
 
   man = queue[0];
-  
+
   n = queueGame(queue, 1);
 
   cout << 0 << " " << n << endl;
